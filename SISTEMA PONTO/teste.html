@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Teste de Conexão Firebase</title>
+</head>
+<body style="font-family: sans-serif; padding: 20px;">
+    <h1>Teste de Conexão com Firebase</h1>
+    <p>Abra o console (F12) para ver as mensagens detalhadas.</p>
+    <p id="status" style="font-weight: bold; font-size: 1.2em;">Iniciando teste...</p>
+
+    <script type="module">
+        // Importa o banco de dados da sua configuração existente
+        import { db } from './firebase-config.js'; 
+        // Importa apenas as funções que precisamos para o teste
+        import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+
+        async function testarConexao() {
+            const statusEl = document.getElementById('status');
+            try {
+                console.log("Tentando se conectar ao Firebase...");
+                statusEl.textContent = "Tentando escrever no banco de dados...";
+
+                // Tenta escrever um documento em uma coleção de teste
+                const docRef = await addDoc(collection(db, "testesDeConexao"), {
+                    mensagem: "A conexao funcionou!",
+                    horario: serverTimestamp()
+                });
+
+                console.log("SUCESSO! Documento escrito com ID: ", docRef.id);
+                statusEl.textContent = "✅ SUCESSO! A conexão com o Firebase está funcionando!";
+                statusEl.style.color = 'green';
+
+            } catch (error) {
+                console.error("🚨 FALHA NA CONEXÃO:", error);
+                statusEl.textContent = "❌ FALHA! A conexão com o Firebase não funcionou. Verifique o console para o erro detalhado.";
+                statusEl.style.color = 'red';
+            }
+        }
+
+        // Executa o teste assim que a página carrega
+        testarConexao();
+    </script>
+</body>
+</html>
