@@ -3,6 +3,11 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f2f5;
     color: #333;
+    /* Adicionei estas 4 linhas para centralizar todo o conteúdo do body */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 header {
@@ -70,13 +75,14 @@ header h2 {
 }
 
 /* Usado no HTML para centralizar o conteúdo de uma página */
+/* Removi a regra align-items: center para não interferir na página de login */
 .main-centered {
-    align-items: center;
+   
 }
 
 
 /* ======================================================= */
-/* ESTILOS DOS FORMULÁRIOS (BLOCO BRANCO)                  */
+/* ESTILOS DOS FORMULÁRIOS (BLOCO BRANCO)                  */
 /* ======================================================= */
 
 /* Base para TODOS os formulários (sem largura definida aqui) */
@@ -87,12 +93,11 @@ header h2 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     margin: 40px 0;
 }
-
-/* Largura para formulários PEQUENOS (Login e Cadastro) */
+/* Removi a largura fixa, agora a centralização vem do body */
 .login-page .form-container,
 .page-cadastro .form-container {
     max-width: 400px;
-    width: 100%; 
+    width: 100%;
 }
 
 /* Largura para formulários LARGOS (Config) */
@@ -101,7 +106,7 @@ header h2 {
 }
 
 /* ======================================================= */
-/* ESTILOS PARA O CONTEÚDO DENTRO DOS FORMULÁRIOS          */
+/* ESTILOS PARA O CONTEÚDO DENTRO DOS FORMULÁRIOS          */
 /* ======================================================= */
 .form-container h3 {
     text-align: center;
@@ -132,7 +137,7 @@ header h2 {
 
 
 /* ======================================================= */
-/* ESTILOS GERAIS                                          */
+/* ESTILOS GERAIS                                          */
 /* ======================================================= */
 
 .form-container input {
@@ -324,6 +329,7 @@ th {
     border-radius: 5px;
 }
 
+/* Removi os estilos específicos da página de login e cadastro, pois o body já fará o trabalho */
 .login-page header {
     margin-left: 0;
 }
@@ -486,7 +492,7 @@ th {
     }
 }
 /* ======================================================= */
-/* ESTILOS PARA A PÁGINA DE CONFIGURAÇÕES (FLEXBOX)        */
+/* ESTILOS PARA A PÁGINA DE CONFIGURAÇÕES (FLEXBOX)        */
 /* ======================================================= */
 
 /* Aumenta a largura máxima do container para caber as duas colunas */
@@ -499,7 +505,7 @@ th {
 .settings-grid {
     display: flex;
     flex-wrap: wrap; /* Permite que as caixas quebrem para a linha de baixo */
-    gap: 40px;       /* Espaçamento de 40px entre as caixas */
+    gap: 40px;       /* Espaçamento de 40px entre as caixas */
 }
 
 /* Define o tamanho de cada caixa para caber 2 por linha */
@@ -533,7 +539,7 @@ th {
 
 
 /* ======================================================= */
-/* AJUSTE PARA TELAS MENORES (RESPONSIVIDADE)              */
+/* AJUSTE PARA TELAS MENORES (RESPONSIVIDADE)              */
 /* ======================================================= */
 
 @media (max-width: 992px) {
@@ -543,7 +549,7 @@ th {
     }
 }
 /* ======================================================= */
-/* ESTILOS PARA OS CONTROLES DE ADMIN EM CONFIGURAÇÕES     */
+/* ESTILOS PARA OS CONTROLES DE ADMIN EM CONFIGURAÇÕES     */
 /* ======================================================= */
 
 /* --- Estilo Base (Compartilhado entre os 3 elementos) --- */
@@ -602,7 +608,7 @@ th {
 }
 
 /* ======================================================= */
-/* ESTILO DO TEXTO DENTRO DAS CAIXAS DE INPUT E TEXTAREA   */
+/* ESTILO DO TEXTO DENTRO DAS CAIXAS DE INPUT E TEXTAREA   */
 /* ======================================================= */
 
 /* --- Estilo para o texto digitado --- */
@@ -615,55 +621,55 @@ textarea,
 select {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px; /* Tamanho mais legível e evita zoom em celulares */
-    color: #333;     /* Cor do texto um pouco mais suave que o preto puro */
+    color: #333;     /* Cor do texto um pouco mais suave que o preto puro */
 }
 
 /* --- Estilo para o texto de placeholder (ex: "Digite aqui...") --- */
 ::placeholder { /* Padrão para Chrome, Firefox, Opera, Safari */
-  color: #a9a9a9; /* Cinza claro */
-  font-style: italic;
-  opacity: 1; /* Necessário para o Firefox */
+  color: #a9a9a9; /* Cinza claro */
+  font-style: italic;
+  opacity: 1; /* Necessário para o Firefox */
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #a9a9a9;
-  font-style: italic;
+  color: #a9a9a9;
+  font-style: italic;
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-  color: #a9a9a9;
-  font-style: italic;
+  color: #a9a9a9;
+  font-style: italic;
 }
 
 /* ======================================================= */
-/* AJUSTES ESPECÍFICOS PARA A PÁGINA DASHBOARD         */
+/* AJUSTES ESPECÍFICOS PARA A PÁGINA DASHBOARD         */
 /* ======================================================= */
 
 /* Faz os cards de resumo no Dashboard e Relatórios terem largura automática */
 #resumoDiaCard,
 #resumoMensalCard {
-    width: fit-content; /* A mágica acontece aqui! */
-    min-width: 320px;   /* Definimos uma largura mínima para manter a boa aparência */
-    max-width: 500px;
+    width: fit-content; /* A mágica acontece aqui! */
+    min-width: 320px;   /* Definimos uma largura mínima para manter a boa aparência */
+    max-width: 500px;
 }
 
 /* Estiliza o container do botão "Ver Histórico Geral" */
 .view-all-container {
-    margin-top: 30px;   /* Aumenta a separação entre a tabela e o botão */
-    text-align: center; /* Centraliza o botão na página */
+    margin-top: 30px;   /* Aumenta a separação entre a tabela e o botão */
+    text-align: center; /* Centraliza o botão na página */
 }
 
 /* Faz o botão "Ver Histórico Geral" ter largura automática (ficar menor) */
 .view-all-container .btn {
-    width: auto;
+    width: auto;
 }
 
 /* Estilo para o container do botão de gerar PDF */
 .pdf-button-container {
-    margin-bottom: 25px;
-    text-align: right; /* Alinha o botão à direita */
+    margin-bottom: 25px;
+    text-align: right; /* Alinha o botão à direita */
 }
 
 .pdf-button-container .btn {
-    width: auto; /* Faz o botão ter largura automática */
+    width: auto; /* Faz o botão ter largura automática */
 }
