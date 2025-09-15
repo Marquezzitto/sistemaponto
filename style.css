@@ -3,11 +3,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f2f5;
     color: #333;
-    /* Adicionei estas 4 linhas para centralizar todo o conteúdo do body */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
 header {
@@ -71,21 +66,17 @@ header h2 {
     padding: 30px;
     display: flex;
     flex-direction: column;
-    align-items: stretch; /* Padrão: alinhado à esquerda */
+    align-items: stretch;
 }
 
-/* Usado no HTML para centralizar o conteúdo de uma página */
-/* Removi a regra align-items: center para não interferir na página de login */
 .main-centered {
-   
+    align-items: center;
 }
-
 
 /* ======================================================= */
 /* ESTILOS DOS FORMULÁRIOS (BLOCO BRANCO)                  */
 /* ======================================================= */
 
-/* Base para TODOS os formulários (sem largura definida aqui) */
 .form-container {
     background-color: white;
     padding: 30px;
@@ -93,14 +84,24 @@ header h2 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     margin: 40px 0;
 }
-/* Removi a largura fixa, agora a centralização vem do body */
+
+/* ✅ ✅ ✅ A CORREÇÃO ESTÁ AQUI ✅ ✅ ✅ */
+/* Adicionando flexbox para centralizar apenas a página de login e cadastro */
+.login-page,
+.page-cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
 .login-page .form-container,
 .page-cadastro .form-container {
     max-width: 400px;
     width: 100%;
 }
+/* ✅ ✅ ✅ FIM DA CORREÇÃO ✅ ✅ ✅ */
 
-/* Largura para formulários LARGOS (Config) */
 .form-container.form-container-wide {
     max-width: 700px;
 }
@@ -119,7 +120,6 @@ header h2 {
     align-items: center;
 }
 
-/* Largura PADRÃO (80%) para os campos */
 .form-container label {
     display: block;
     text-align: left;
@@ -329,7 +329,6 @@ th {
     border-radius: 5px;
 }
 
-/* Removi os estilos específicos da página de login e cadastro, pois o body já fará o trabalho */
 .login-page header {
     margin-left: 0;
 }
@@ -495,36 +494,32 @@ th {
 /* ESTILOS PARA A PÁGINA DE CONFIGURAÇÕES (FLEXBOX)        */
 /* ======================================================= */
 
-/* Aumenta a largura máxima do container para caber as duas colunas */
 .form-container.form-container-wide {
     max-width: 1100px;
     width: 100%;
 }
 
-/* Cria o container flexível que vai alinhar as caixas */
 .settings-grid {
     display: flex;
-    flex-wrap: wrap; /* Permite que as caixas quebrem para a linha de baixo */
-    gap: 40px;       /* Espaçamento de 40px entre as caixas */
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
-/* Define o tamanho de cada caixa para caber 2 por linha */
 .settings-card {
-    width: calc(50% - 20px); /* 50% da largura menos metade do espaçamento */
+    width: calc(50% - 20px);
     display: flex;
     flex-direction: column;
 }
 
-/* Ajustes nos formulários dentro das caixas */
 .settings-card form {
-    align-items: flex-start; /* Alinha os labels à esquerda */
-    flex-grow: 1; /* Faz o formulário crescer para ocupar o espaço da caixa */
+    align-items: flex-start;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
 .settings-card form button {
-    margin-top: auto; /* Empurra o botão 'Salvar' para o final da caixa */
+    margin-top: auto;
 }
 
 .settings-card form label,
@@ -534,7 +529,7 @@ th {
 #admin-management-section input,
 #admin-management-section button,
 #admin-management-section select {
-    width: 100%; /* Faz os campos ocuparem 100% da largura da caixa */
+    width: 100%;
 }
 
 
@@ -543,7 +538,6 @@ th {
 /* ======================================================= */
 
 @media (max-width: 992px) {
-    /* Faz as caixas ocuparem 100% da largura, voltando a uma única coluna */
     .settings-card {
         width: 100%;
     }
@@ -552,7 +546,6 @@ th {
 /* ESTILOS PARA OS CONTROLES DE ADMIN EM CONFIGURAÇÕES     */
 /* ======================================================= */
 
-/* --- Estilo Base (Compartilhado entre os 3 elementos) --- */
 #select-colaborador,
 #reset-senha,
 #btn-reset-senha {
@@ -570,25 +563,22 @@ th {
     width: 100%;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     transition: all 0.2s ease-in-out;
-    margin-bottom: 10px; /* Adiciona um pequeno espaço abaixo */
+    margin-bottom: 10px;
 }
 
-/* --- Estilo Específico para o Seletor (Adiciona a seta) --- */
 #select-colaborador {
     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2334495e%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
     background-repeat: no-repeat;
     background-position: right 15px top 50%;
     background-size: 12px auto;
-    padding-right: 40px; /* Adiciona espaço para a seta não sobrepor o texto */
+    padding-right: 40px;
 }
 
-/* --- Estilo Específico para o Botão (Muda a cor de fundo e centraliza o texto) --- */
 #btn-reset-senha {
-    background-color: #f0f2f5; /* Um cinza bem claro para diferenciar de um campo de texto */
+    background-color: #f0f2f5;
     text-align: center;
 }
 
-/* --- Efeitos de Hover e Focus (Quando passa o mouse ou clica) --- */
 #select-colaborador:hover,
 #reset-senha:hover,
 #btn-reset-senha:hover {
@@ -597,7 +587,7 @@ th {
 }
 
 #btn-reset-senha:hover {
-    background-color: #e9ecef; /* Escurece um pouco o botão no hover */
+    background-color: #e9ecef;
 }
 
 #select-colaborador:focus,
@@ -611,7 +601,6 @@ th {
 /* ESTILO DO TEXTO DENTRO DAS CAIXAS DE INPUT E TEXTAREA   */
 /* ======================================================= */
 
-/* --- Estilo para o texto digitado --- */
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -620,23 +609,22 @@ input[type="time"],
 textarea,
 select {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16px; /* Tamanho mais legível e evita zoom em celulares */
-    color: #333;     /* Cor do texto um pouco mais suave que o preto puro */
+    font-size: 16px;
+    color: #333;
 }
 
-/* --- Estilo para o texto de placeholder (ex: "Digite aqui...") --- */
-::placeholder { /* Padrão para Chrome, Firefox, Opera, Safari */
-  color: #a9a9a9; /* Cinza claro */
+::placeholder {
+  color: #a9a9a9;
   font-style: italic;
-  opacity: 1; /* Necessário para o Firefox */
+  opacity: 1;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+:-ms-input-placeholder {
   color: #a9a9a9;
   font-style: italic;
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
+::-ms-input-placeholder {
   color: #a9a9a9;
   font-style: italic;
 }
@@ -645,31 +633,27 @@ select {
 /* AJUSTES ESPECÍFICOS PARA A PÁGINA DASHBOARD         */
 /* ======================================================= */
 
-/* Faz os cards de resumo no Dashboard e Relatórios terem largura automática */
 #resumoDiaCard,
 #resumoMensalCard {
-    width: fit-content; /* A mágica acontece aqui! */
-    min-width: 320px;   /* Definimos uma largura mínima para manter a boa aparência */
+    width: fit-content;
+    min-width: 320px;
     max-width: 500px;
 }
 
-/* Estiliza o container do botão "Ver Histórico Geral" */
 .view-all-container {
-    margin-top: 30px;   /* Aumenta a separação entre a tabela e o botão */
-    text-align: center; /* Centraliza o botão na página */
+    margin-top: 30px;
+    text-align: center;
 }
 
-/* Faz o botão "Ver Histórico Geral" ter largura automática (ficar menor) */
 .view-all-container .btn {
     width: auto;
 }
 
-/* Estilo para o container do botão de gerar PDF */
 .pdf-button-container {
     margin-bottom: 25px;
-    text-align: right; /* Alinha o botão à direita */
+    text-align: right;
 }
 
 .pdf-button-container .btn {
-    width: auto; /* Faz o botão ter largura automática */
+    width: auto;
 }
